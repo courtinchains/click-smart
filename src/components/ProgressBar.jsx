@@ -7,11 +7,11 @@ export default function ProgressBar({ dark = false }) {
   const { confirmedRaisedUSD: raised, goalUSD: goal, confirmedDonations, lastUpdated } = campaign
   const pct = Math.min(100, Math.round((raised / goal) * 100))
   const remaining = Math.max(0, goal - raised)
-  const muted = dark ? 'text-white/65' : 'text-ink-soft'
+  const muted = dark ? 'text-on-deep/85' : 'text-ink-soft'
 
   return (
     <div>
-      <p className={`font-display text-6xl font-extrabold tracking-tight ${dark ? 'text-white' : 'text-ink'}`}>
+      <p className={`font-display text-6xl tracking-tight ${dark ? 'text-white' : 'text-ink'}`}>
         {usd(raised)}
       </p>
       <p className={`mt-1 text-lg ${muted}`}>raised of our {usd(goal)} goal</p>

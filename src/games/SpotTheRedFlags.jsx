@@ -87,7 +87,7 @@ export default function SpotTheRedFlags({ onHome }) {
         onHome={onHome}
       />
 
-      <div className="mt-6 overflow-hidden rounded-[28px] bg-white shadow-sm ring-1 ring-line">
+      <div className="mt-6 overflow-hidden rounded-card bg-white shadow-sm ring-1 ring-line">
         <div className="border-b border-line px-5 py-4 sm:px-6">
           <h2 className="text-2xl font-bold">{scenario.title}</h2>
           <p className="text-sm text-ink-soft">{scenario.setting}</p>
@@ -171,14 +171,14 @@ export default function SpotTheRedFlags({ onHome }) {
               : `${selected.size} flagged`}
           </p>
           {checked ? (
-            <button type="button" onClick={next} className="rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-ink">
+            <button type="button" onClick={next} className="rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-deep">
               {index + 1 >= scenarios.length ? 'See my result' : 'Next chat'}
             </button>
           ) : (
             <button
               type="button"
               onClick={check}
-              className="rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-ink"
+              className="rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-deep"
             >
               Check my answers
             </button>

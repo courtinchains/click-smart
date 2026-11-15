@@ -22,7 +22,7 @@ export default function ShareButton({ text, label = 'Share your result' }) {
 
   return (
     <div>
-      <button type="button" onClick={share} className="rounded-full bg-signal px-6 py-3 text-lg font-bold text-white hover:bg-ink">
+      <button type="button" onClick={share} className="rounded-full bg-signal px-6 py-3 text-lg font-bold text-white hover:bg-deep">
         {label}
       </button>
       <p role="status" className="mt-2 min-h-6 text-ink-soft">

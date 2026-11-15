@@ -14,7 +14,7 @@ export default function HeroChat() {
 
   return (
     <div className="relative">
-      <div className="rounded-[28px] bg-white p-4 shadow-[0_24px_60px_-28px_rgba(26,27,65,0.45)] ring-1 ring-line sm:p-5">
+      <div className="rounded-card bg-white p-4 shadow-[0_24px_60px_-28px_rgba(26,27,65,0.45)] ring-1 ring-line sm:p-5">
         <div className="flex items-center gap-3 border-b border-line pb-3">
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-bubble font-display text-sm font-bold text-ink-soft" aria-hidden="true">
             S
@@ -88,7 +88,7 @@ export default function HeroChat() {
                 <strong>Spotted.</strong> Your school tells someone where to find you every weekday. People you only
                 know online don’t need it.
               </p>
-              <a href="#/red-flags" className="mt-3 inline-flex rounded-full bg-ink px-5 py-2.5 font-bold text-white hover:bg-signal">
+              <a href="#/red-flags" className="mt-3 inline-flex rounded-full bg-deep px-5 py-2.5 font-bold text-white hover:bg-signal">
                 Play the full game
               </a>
             </div>

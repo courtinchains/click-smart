@@ -9,7 +9,7 @@ export default function Home() {
       {/* Hero */}
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 pt-10 pb-20 sm:px-8 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:pt-16 lg:pb-28">
         <div>
-          <h1 className="text-[clamp(2.75rem,7vw,5.25rem)] leading-[0.95] font-extrabold tracking-[-0.03em]">
+          <h1 className="text-[clamp(2.75rem,7vw,5.25rem)] leading-[0.95] tracking-[-0.03em]">
             Can you spot the red flag?
           </h1>
           <p className="mt-6 max-w-[34rem] text-xl leading-relaxed text-ink-soft">
@@ -17,7 +17,7 @@ export default function Home() {
             page, then challenge your friends to beat your score.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
-            <a href="#/red-flags" className="rounded-full bg-signal px-7 py-4 text-lg font-bold text-white hover:bg-ink">
+            <a href="#/red-flags" className="rounded-full bg-signal px-7 py-4 text-lg font-bold text-white hover:bg-deep">
               Start playing
             </a>
             <a href="#support" className="font-bold text-ink underline decoration-2 underline-offset-4 hover:text-signal">
@@ -34,7 +34,7 @@ export default function Home() {
       {/* Games */}
       <section aria-labelledby="games-title" className="border-y border-line bg-white">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
-          <h2 id="games-title" className="text-4xl font-extrabold tracking-tight">Two games, about five minutes</h2>
+          <h2 id="games-title" className="text-4xl tracking-tight">Two games, about five minutes</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <GameLink
               href="#/red-flags"
@@ -56,23 +56,23 @@ export default function Home() {
       </section>
 
       {/* Fundraising */}
-      <section id="support" aria-labelledby="support-title" className="scroll-mt-4 bg-ink text-white">
+      <section id="support" aria-labelledby="support-title" className="scroll-mt-4 bg-deep text-white">
         <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.2fr_1fr] lg:py-24">
           <div>
-            <h2 id="support-title" className="text-[clamp(2.25rem,5vw,3.5rem)] leading-[1.02] font-extrabold tracking-tight">
+            <h2 id="support-title" className="text-[clamp(2.25rem,5vw,3.5rem)] leading-[1.02] tracking-tight">
               The games are free. Keeping children safe online isn’t.
             </h2>
-            <p className="mt-6 max-w-[36rem] text-lg leading-relaxed text-white/80">
+            <p className="mt-6 max-w-[36rem] text-lg leading-relaxed text-on-deep">
               {showOrg
                 ? `${campaign.name} is a volunteer project by ${campaign.fundraiser}, raising money for ${campaign.organisation}, which works to protect children from online sexual abuse.`
                 : `${campaign.name} is a volunteer project by ${campaign.fundraiser}, raising money for work that protects children from online abuse.`}{' '}
               If you enjoyed playing, an optional donation helps that work continue.
             </p>
-            <p className="mt-4 max-w-[36rem] text-white/60">
+            <p className="mt-4 max-w-[36rem] text-on-deep/85">
               Donations go through RallyUp’s secure page. This site never sees your payment details.
             </p>
           </div>
-          <div className="self-end rounded-[28px] bg-white/[0.06] p-6 ring-1 ring-white/15 sm:p-8">
+          <div className="self-end rounded-card bg-white/[0.06] p-6 ring-1 ring-white/15 sm:p-8">
             <ProgressBar dark />
             <DonateButton size="lg" className="mt-7 w-full" />
           </div>
@@ -81,7 +81,7 @@ export default function Home() {
 
       {/* Take part */}
       <section aria-labelledby="how-title" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
-        <h2 id="how-title" className="text-4xl font-extrabold tracking-tight">Take the {campaign.hashtag}</h2>
+        <h2 id="how-title" className="text-4xl tracking-tight">Take the {campaign.hashtag}</h2>
         <ol className="mt-10 grid gap-10 sm:grid-cols-3 sm:gap-8">
           {[
             ['Play', 'Pick a game and see how sharp your instincts are.'],
@@ -89,7 +89,7 @@ export default function Home() {
             ['Support', 'If you can, chip in. Sixty people giving $5 gets us to the goal.'],
           ].map(([t, d], i) => (
             <li key={t} className="border-t-4 border-ink pt-5">
-              <p className="font-display text-5xl font-extrabold text-signal">{i + 1}</p>
+              <p className="font-display text-5xl text-signal">{i + 1}</p>
               <h3 className="mt-2 text-2xl font-bold">{t}</h3>
               <p className="mt-2 text-lg text-ink-soft">{d}</p>
             </li>
@@ -104,7 +104,7 @@ function GameLink({ href, title, minutes, text, art }) {
   return (
     <a
       href={href}
-      className="group flex flex-col overflow-hidden rounded-[28px] bg-paper ring-1 ring-line transition hover:ring-2 hover:ring-signal"
+      className="group flex flex-col overflow-hidden rounded-card bg-paper ring-1 ring-line transition hover:ring-2 hover:ring-signal"
     >
       <div className="flex h-48 items-center justify-center px-6" aria-hidden="true">
         {art}

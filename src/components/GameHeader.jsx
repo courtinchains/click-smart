@@ -6,14 +6,14 @@ export default function GameHeader({ title, step, steps, score, onHome }) {
       </button>
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-[clamp(2.25rem,5vw,3.25rem)] leading-none font-extrabold tracking-tight">{title}</h1>
+          <h1 className="text-[clamp(2.25rem,5vw,3.25rem)] leading-none tracking-tight">{title}</h1>
           {steps > 1 && (
             <p className="mt-2 text-lg text-ink-soft">
               Chat {step} of {steps}
             </p>
           )}
         </div>
-        <p className="font-display text-2xl font-extrabold" aria-live="polite">
+        <p className="font-display text-2xl" aria-live="polite">
           {score} <span className="font-sans text-base font-normal text-ink-soft">points</span>
         </p>
       </div>

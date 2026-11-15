@@ -1,26 +1,33 @@
 @import "tailwindcss";
 
+/* Colours and type follow SOSA's own site (sosatogether.org). */
 @theme {
-  --font-sans: "Atkinson Hyperlegible", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Libre Franklin Variable", "Libre Franklin", Helvetica, Arial, sans-serif;
+  --font-display: "Source Serif 4 Variable", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --color-ink: #1a1b41;      /* text, dark bands */
-  --color-ink-soft: #4a4c72; /* secondary text */
-  --color-paper: #f5f6fb;    /* page background */
-  --color-bubble: #e6e8f3;   /* their messages */
-  --color-line: #d7daea;     /* hairlines, outlines */
-  --color-signal: #3d34e0;   /* your messages, primary actions */
-  --color-flag: #ff5a3c;     /* red flags only */
-  --color-flag-tint: #ffe9e4;
-  --color-safe: #12936a;     /* correct answers */
-  --color-safe-tint: #ddf4ea;
-  --color-sun: #ffc83d;      /* donate */
+  --color-ink: #17252a;       /* SOSA deep ink: text */
+  --color-ink-soft: #4b5c5b;  /* SOSA body grey */
+  --color-deep: #123c55;      /* SOSA ink teal: dark bands */
+  --color-on-deep: #c3d2e0;   /* SOSA text on dark */
+  --color-paper: #fbf8f4;     /* SOSA cream */
+  --color-bubble: #dce4f3;    /* SOSA sand: their messages */
+  --color-line: #e6ded3;      /* SOSA border */
+  --color-signal: #2a7099;    /* SOSA jade: your messages, links, primary actions */
+  --color-flag: #8c2f4c;      /* SOSA alert ink: red flags */
+  --color-flag-tint: #f7d9e0; /* SOSA alert background */
+  --color-safe: #2c7139;      /* SOSA green ink: correct */
+  --color-safe-tint: #d5ebd0; /* SOSA green background */
+  --color-sun: #74e46e;       /* SOSA pop green: donate */
+
+  --radius-card: 2px;
 }
 
 @layer base {
   html { scroll-behavior: smooth; }
   body { @apply bg-paper text-ink font-sans antialiased; }
   h1, h2, h3 { @apply font-display; text-wrap: balance; }
+  h1, h2 { font-weight: 400; letter-spacing: -0.025em; }
   :focus-visible { outline: 3px solid var(--color-signal); outline-offset: 3px; }
 }
 

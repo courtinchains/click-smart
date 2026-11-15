@@ -71,10 +71,10 @@ export default function PrivacyDetective({ onHome }) {
 
       <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_18rem]">
         {/* Fictional profile */}
-        <div className="overflow-hidden rounded-[28px] bg-white shadow-sm ring-1 ring-line">
+        <div className="overflow-hidden rounded-card bg-white shadow-sm ring-1 ring-line">
           <div className="h-24" style={{ background: `linear-gradient(90deg, ${profile.banner[0]}, ${profile.banner[1]})` }} aria-hidden="true" />
           <div className="px-5 pb-6 sm:px-6">
-            <div className="-mt-10 flex h-20 w-20 items-center justify-center rounded-full bg-ink font-display text-2xl font-bold text-white ring-4 ring-white" aria-hidden="true">
+            <div className="-mt-10 flex h-20 w-20 items-center justify-center rounded-full bg-deep font-display text-2xl text-white ring-4 ring-white" aria-hidden="true">
               {profile.avatarInitials}
             </div>
             <p className="mt-3 text-2xl font-bold">{profile.displayName}</p>
@@ -104,7 +104,7 @@ export default function PrivacyDetective({ onHome }) {
 
         {/* Side panel */}
         <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
-          <div className="rounded-[28px] bg-white p-5 shadow-sm ring-1 ring-line">
+          <div className="rounded-card bg-white p-5 shadow-sm ring-1 ring-line">
             <p className="text-sm text-ink-soft" aria-live="polite">
               {checked ? (
                 <>
@@ -118,17 +118,17 @@ export default function PrivacyDetective({ onHome }) {
               )}
             </p>
             {checked ? (
-              <button type="button" onClick={() => { setDone(true); window.scrollTo({ top: 0 }) }} className="mt-4 w-full rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-ink">
+              <button type="button" onClick={() => { setDone(true); window.scrollTo({ top: 0 }) }} className="mt-4 w-full rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-deep">
                 See my result
               </button>
             ) : (
-              <button type="button" onClick={() => setChecked(true)} className="mt-4 w-full rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-ink">
+              <button type="button" onClick={() => setChecked(true)} className="mt-4 w-full rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-deep">
                 Check my answers
               </button>
             )}
           </div>
           {checked && (
-            <div className="rounded-[28px] bg-safe-tint p-5">
+            <div className="rounded-card bg-safe-tint p-5">
               <h2 className="font-semibold text-ink">Safer sharing checklist</h2>
               <ul className="mt-2 space-y-2 text-sm text-ink">
                 {TIPS.map((t) => (

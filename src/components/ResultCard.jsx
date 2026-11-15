@@ -16,18 +16,18 @@ export default function ResultCard({ game, score, max, found, total, onReplay, o
 
   return (
     <section aria-labelledby="result-title" className="mx-auto max-w-3xl">
-      <div className="overflow-hidden rounded-[28px] bg-ink text-white">
+      <div className="overflow-hidden rounded-card bg-deep text-white">
         <div className="px-6 py-10 sm:px-10 sm:py-12">
-          <p className="text-lg text-white/70">{game}</p>
-          <h1 id="result-title" className="mt-2 text-[clamp(2.75rem,8vw,4.5rem)] leading-none font-extrabold tracking-tight">
+          <p className="text-lg text-on-deep/85">{game}</p>
+          <h1 id="result-title" className="mt-2 text-[clamp(2.75rem,8vw,4.5rem)] leading-none tracking-tight">
             {badge}
           </h1>
           <div className="mt-8 flex flex-wrap items-end gap-x-10 gap-y-4">
             <p>
-              <span className="font-display text-5xl font-extrabold text-sun">{score}</span>
-              <span className="text-xl text-white/70"> / {max} points</span>
+              <span className="font-display text-5xl text-sun">{score}</span>
+              <span className="text-xl text-on-deep/85"> / {max} points</span>
             </p>
-            <p className="text-lg text-white/70">
+            <p className="text-lg text-on-deep/85">
               {found} of {total} found
             </p>
           </div>
@@ -36,14 +36,14 @@ export default function ResultCard({ game, score, max, found, total, onReplay, o
       </div>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2">
-        <div className="rounded-[28px] bg-white p-6 ring-1 ring-line sm:p-7">
+        <div className="rounded-card bg-white p-6 ring-1 ring-line sm:p-7">
           <h2 className="text-2xl font-bold">Challenge your friends</h2>
           <p className="mt-2 text-ink-soft">Share your score. No sign-up, and your result isn’t stored anywhere.</p>
           <div className="mt-5">
             <ShareButton text={shareText} />
           </div>
         </div>
-        <div className="rounded-[28px] bg-sun/25 p-6 ring-1 ring-sun sm:p-7">
+        <div className="rounded-card bg-sun/25 p-6 ring-1 ring-sun sm:p-7">
           <h2 className="text-2xl font-bold">Help keep children safer online</h2>
           <p className="mt-2 text-ink">
             {showOrg

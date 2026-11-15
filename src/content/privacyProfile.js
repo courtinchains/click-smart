@@ -16,7 +16,7 @@ export const profiles = [
     followers: '1,204',
     following: '388',
     avatarInitials: 'AM',
-    banner: ['#3d34e0', '#ff5a3c'],
+    banner: ['#2a7099', '#8a4460'],
     items: [
       { id: 'school', kind: 'bio', text: '🏫 Year 10 @ Hillcrest High · Room 14', risky: true, why: 'Naming your school (and even your classroom) tells strangers exactly where to find you on weekdays.' },
       { id: 'hobby', kind: 'bio', text: '🎨 Drawing · 🎸 Learning guitar', risky: false, why: 'Sharing hobbies is generally fine. It doesn’t reveal where you are or how to contact you.' },
@@ -37,7 +37,7 @@ export const profiles = [
     followers: '842',
     following: '510',
     avatarInitials: 'TN',
-    banner: ['#12936a', '#ffc83d'],
+    banner: ['#2c7139', '#eed57e'],
     items: [
       { id: 'course', kind: 'bio', text: '📚 Second-year computer science student', risky: false, why: 'A general description of what you study is fine. It doesn’t say where you live or how to reach you.' },
       { id: 'res', kind: 'detail', text: '🏠 Res: Block C, Room 214', risky: true, why: 'Your residence and room number tell anyone exactly where you sleep. Keep it for people you know in person.' },
@@ -56,7 +56,7 @@ export const profiles = [
     followers: '2,317',
     following: '701',
     avatarInitials: 'J',
-    banner: ['#ff5a3c', '#ffc83d'],
+    banner: ['#8a4460', '#eed57e'],
     items: [
       { id: 'mum', kind: 'bio', text: '💛 Mum to two little legends', risky: false, why: 'Saying you’re a parent, without names, schools or photos, keeps your children private.' },
       { id: 'public', kind: 'detail', text: '🌍 Account: Public', risky: true, why: 'With a public account, every photo of your children can be seen, saved and shared by strangers.' },
@@ -74,7 +74,7 @@ export const profiles = [
     followers: '356',
     following: '122',
     avatarInitials: 'K',
-    banner: ['#1a1b41', '#3d34e0'],
+    banner: ['#123c55', '#2a7099'],
     items: [
       { id: 'streaming', kind: 'bio', text: '🎮 Streaming most nights', risky: false, why: 'Saying you stream is fine. Just keep schedules and personal details out of it.' },
       { id: 'age', kind: 'detail', text: '🎂 Turning 14 next week!', risky: true, why: 'Sharing your exact age tells strangers you’re young, which can attract the wrong attention. You don’t need to post it.' },
@@ -93,7 +93,7 @@ export const profiles = [
     followers: '1,089',
     following: '640',
     avatarInitials: 'PP',
-    banner: ['#12936a', '#3d34e0'],
+    banner: ['#2c7139', '#2a7099'],
     items: [
       { id: 'bio', kind: 'bio', text: '🏃 Running · 🌱 Plants · ☕ Coffee', risky: false, why: 'Interests on their own are safe to share.' },
       { id: 'work', kind: 'detail', text: '💼 Pharmacist at Sunrise Pharmacy, Main Road', risky: true, why: 'Your exact workplace tells strangers where you are most days. A general job title is enough.' },
@@ -111,7 +111,7 @@ export const profiles = [
     followers: '673',
     following: '415',
     avatarInitials: 'DM',
-    banner: ['#3d34e0', '#12936a'],
+    banner: ['#2a7099', '#2c7139'],
     items: [
       { id: 'bio', kind: 'bio', text: '💻 Software developer · coffee enthusiast', risky: false, why: 'A general job title and interests are fine to share.' },
       { id: 'phone', kind: 'detail', text: '📱 082 555 0199', risky: true, why: 'A public phone number invites scam calls and messages. Share it directly with people who need it.' },
@@ -129,7 +129,7 @@ export const profiles = [
     followers: '3,402',
     following: '980',
     avatarInitials: 'LM',
-    banner: ['#ffc83d', '#12936a'],
+    banner: ['#eed57e', '#2c7139'],
     items: [
       { id: 'bio', kind: 'bio', text: '✈️ 23 countries and counting', risky: false, why: 'Talking about travel in general is safe.' },
       { id: 'public', kind: 'detail', text: '🌍 Account: Public', risky: true, why: 'Combined with travel posts, a public account tells anyone when your home is empty.' },
@@ -147,7 +147,7 @@ export const profiles = [
     followers: '5,118',
     following: '233',
     avatarInitials: 'SB',
-    banner: ['#ff5a3c', '#3d34e0'],
+    banner: ['#8a4460', '#2a7099'],
     items: [
       { id: 'bio', kind: 'bio', text: '🧁 Custom cakes · orders open', risky: false, why: 'Describing your business is exactly what a business profile is for.' },
       { id: 'form', kind: 'detail', text: '🔗 Order through the form in my link', risky: false, why: 'An order form keeps your personal number and address private. Good choice.' },
