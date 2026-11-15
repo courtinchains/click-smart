@@ -44,6 +44,9 @@ The game content is kept apart from the code, so SOSA can review it as plain tex
   one at random. Each item is marked `risky: true/false` and has a `why`
   explanation.
 
+- `src/content/mythOrFact.js`: eighteen statements, each marked
+  `answer: 'myth' | 'fact'` with a `why`. Each round deals eight (`ROUND_SIZE`).
+
 Rounds are dealt like a shuffled deck (`src/lib/pick.js`): players see every
 chat or profile once before any of them repeats.
 
@@ -72,6 +75,7 @@ src/
   games/
     SpotTheRedFlags.jsx
     PrivacyDetective.jsx
+    MythOrFact.jsx
   components/
     Home.jsx                 landing page
     ResultCard.jsx           score, badge, share and donate prompt
@@ -81,7 +85,7 @@ src/
     GameHeader.jsx, Footer.jsx
 ```
 
-Each game has its own address: `/#/red-flags` and `/#/privacy`, so you can link
+Each game has its own address: `/#/red-flags`, `/#/privacy` and `/#/myth-or-fact`, so you can link
 straight to one in a social post.
 
 ## Launch checklist
@@ -97,6 +101,7 @@ straight to one in a social post.
 
 ## Adding the next game
 
-Create `src/games/MythOrFact.jsx`, put its content in `src/content/`, add a
-route in `App.jsx` and a card to `GAMES` in `Home.jsx`. You can reuse
-`GameHeader` and `ResultCard` for a matching look.
+Create `src/games/WhatWouldYouDo.jsx` and put its content in `src/content/`.
+Add the route name to `ROUTES` in `App.jsx` (plus a line choosing the page),
+and a `<GameLink>` card in `Home.jsx`. Reuse `GameHeader`, `ResultCard` and
+`pickFresh` from `src/lib/pick.js` for a matching look and random rounds.

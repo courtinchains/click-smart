@@ -9,7 +9,7 @@ export function badgeFor(pct) {
   return 'Fresh Start'
 }
 
-export default function ResultCard({ game, score, max, found, total, onReplay, onHome, replayLabel = 'Play again' }) {
+export default function ResultCard({ game, score, max, found, total, onReplay, onHome, replayLabel = 'Play again', foundLabel = 'found' }) {
   const pct = max ? Math.round((score / max) * 100) : 0
   const badge = badgeFor(pct)
 
@@ -27,7 +27,7 @@ export default function ResultCard({ game, score, max, found, total, onReplay, o
               <span className="text-xl text-on-deep/85"> / {max} points</span>
             </p>
             <p className="text-lg text-on-deep/85">
-              {found} of {total} found
+              {found} of {total} {foundLabel}
             </p>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default function ResultCard({ game, score, max, found, total, onReplay, o
           <h2 className="text-2xl font-bold">Challenge your friends</h2>
           <p className="mt-2 text-ink-soft">Post your result card and dare your friends to beat it. Your score isn’t stored anywhere.</p>
           <div className="mt-5">
-            <ShareButton result={{ game, badge, score, max, found, total }} />
+            <ShareButton result={{ game, badge, score, max, found, total, foundLabel }} />
           </div>
         </div>
         <div className="rounded-card bg-sun/25 p-6 ring-1 ring-sun sm:p-7">

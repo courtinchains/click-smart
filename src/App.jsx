@@ -6,10 +6,11 @@ import DonateButton from './components/DonateButton.jsx'
 import ThemeToggle from './components/ThemeToggle.jsx'
 import SpotTheRedFlags from './games/SpotTheRedFlags.jsx'
 import PrivacyDetective from './games/PrivacyDetective.jsx'
+import MythOrFact from './games/MythOrFact.jsx'
 
 // Tiny hash router: #/ , #/red-flags , #/privacy — no extra dependency,
 // and links to a specific game can be shared.
-const ROUTES = ['red-flags', 'privacy']
+const ROUTES = ['red-flags', 'privacy', 'myth-or-fact']
 
 function useRoute() {
   const read = () => {
@@ -46,9 +47,10 @@ export default function App() {
   let page
   if (route === 'red-flags') page = <SpotTheRedFlags onHome={home} />
   else if (route === 'privacy') page = <PrivacyDetective onHome={home} />
+  else if (route === 'myth-or-fact') page = <MythOrFact onHome={home} />
   else page = <Home />
 
-  const isGame = route === 'red-flags' || route === 'privacy'
+  const isGame = ROUTES.includes(route)
 
   return (
     <div className="flex min-h-screen flex-col">

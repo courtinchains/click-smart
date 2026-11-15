@@ -34,8 +34,8 @@ export default function Home() {
       {/* Games */}
       <section aria-labelledby="games-title" className="border-y border-line bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
-          <h2 id="games-title" className="text-4xl tracking-tight">Two games, about five minutes</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <h2 id="games-title" className="text-4xl tracking-tight">Three games, about ten minutes</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <GameLink
               href="#/red-flags"
               title="Spot the Red Flags"
@@ -50,8 +50,15 @@ export default function Home() {
               text="Investigate one of eight made-up profiles and find everything that gives away too much."
               art={<DetectiveArt />}
             />
+            <GameLink
+              href="#/myth-or-fact"
+              title="Myth or Fact"
+              minutes={3}
+              text="Eight quick statements about staying safe online. Decide which are true, and learn why."
+              art={<MythFactArt />}
+            />
           </div>
-          <p className="mt-8 text-ink-soft">More on the way: Myth or Fact, What Would You Do?, and a digital safety escape room.</p>
+          <p className="mt-8 text-ink-soft">More on the way: What Would You Do? and a digital safety escape room.</p>
         </div>
       </section>
 
@@ -131,6 +138,21 @@ function RedFlagsArt() {
         <span className="h-2 flex-1 rounded-full bg-flag/30" />
       </div>
       <div className="h-7 w-1/2 rounded-full rounded-bl-sm bg-bubble" />
+    </div>
+  )
+}
+
+function MythFactArt() {
+  return (
+    <div className="w-full max-w-[17rem]">
+      <div className="rounded-card bg-surface p-4 ring-1 ring-line">
+        <span className="block h-2.5 w-full rounded-full bg-ink/60" />
+        <span className="mt-2 block h-2.5 w-3/4 rounded-full bg-ink/60" />
+      </div>
+      <div className="mt-3 grid grid-cols-2 gap-2">
+        <span className="rounded-card bg-surface py-2 text-center font-display text-lg ring-1 ring-line">Myth</span>
+        <span className="rounded-card bg-safe-tint py-2 text-center font-display text-lg ring-2 ring-safe">Fact</span>
+      </div>
     </div>
   )
 }
