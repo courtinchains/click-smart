@@ -1,12 +1,16 @@
 import { useState } from 'react'
-import { scenarios, POINTS_CORRECT, POINTS_WRONG } from '../content/redFlags.js'
+import { scenarios as allScenarios, POINTS_CORRECT, POINTS_WRONG, ROUND_SIZE } from '../content/redFlags.js'
+import { pickFresh } from '../lib/pick.js'
 import ResultCard from '../components/ResultCard.jsx'
 import GameHeader from '../components/GameHeader.jsx'
+import { FlagIcon } from '../components/HeroChat.jsx'
 
-const TOTAL_FLAGS = scenarios.reduce((n, s) => n + s.messages.filter((m) => m.flag).length, 0)
-const MAX_SCORE = TOTAL_FLAGS * POINTS_CORRECT
+const newRound = () => pickFresh('red-flags', allScenarios, ROUND_SIZE)
 
 export default function SpotTheRedFlags({ onHome }) {
+  const [scenarios, setScenarios] = useState(newRound)
+  const TOTAL_FLAGS = scenarios.reduce((n, s) => n + s.messages.filter((m) => m.flag).length, 0)
+  const MAX_SCORE = TOTAL_FLAGS * POINTS_CORRECT
   const [index, setIndex] = useState(0)
   const [selected, setSelected] = useState(new Set())
   const [checked, setChecked] = useState(false)
@@ -47,6 +51,7 @@ export default function SpotTheRedFlags({ onHome }) {
   }
 
   function replay() {
+    setScenarios(newRound())
     setIndex(0)
     setSelected(new Set())
     setChecked(false)
@@ -64,6 +69,7 @@ export default function SpotTheRedFlags({ onHome }) {
         found={found}
         total={TOTAL_FLAGS}
         onReplay={replay}
+        replayLabel="Play new chats"
         onHome={onHome}
       />
     )
@@ -81,13 +87,13 @@ export default function SpotTheRedFlags({ onHome }) {
         onHome={onHome}
       />
 
-      <div className="mt-6 overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-stone-200">
-        <div className="border-b border-stone-200 px-5 py-4 sm:px-6">
-          <h2 className="text-xl font-bold text-stone-900">{scenario.title}</h2>
-          <p className="text-sm text-stone-600">{scenario.setting}</p>
+      <div className="mt-6 overflow-hidden rounded-[28px] bg-white shadow-sm ring-1 ring-line">
+        <div className="border-b border-line px-5 py-4 sm:px-6">
+          <h2 className="text-2xl font-bold">{scenario.title}</h2>
+          <p className="text-sm text-ink-soft">{scenario.setting}</p>
         </div>
 
-        <p className="bg-teal-50 px-5 py-3 text-sm text-teal-900 sm:px-6">
+        <p className="bg-paper px-5 py-3 text-ink-soft sm:px-6">
           {checked
             ? 'Here’s how you did. Read the explanations below each message.'
             : 'Tap every message from the other person that feels like a red flag, then check your answers.'}
@@ -107,7 +113,7 @@ export default function SpotTheRedFlags({ onHome }) {
             if (mine) {
               return (
                 <li key={i} className="flex justify-end">
-                  <p className="max-w-[80%] rounded-2xl rounded-br-sm bg-teal-700 px-4 py-2 text-white">
+                  <p className="max-w-[80%] rounded-[20px] rounded-br-md bg-signal px-4 py-2.5 text-white">
                     <span className="sr-only">You: </span>
                     {m.text}
                   </p>
@@ -117,11 +123,11 @@ export default function SpotTheRedFlags({ onHome }) {
 
             const bubble = {
               idle: isSel
-                ? 'bg-red-50 ring-2 ring-red-500'
-                : 'bg-stone-100 ring-1 ring-stone-200 hover:ring-stone-400',
-              hit: 'bg-emerald-50 ring-2 ring-emerald-600',
-              missed: 'bg-amber-50 ring-2 ring-amber-500',
-              wrong: 'bg-stone-100 ring-2 ring-stone-400',
+                ? 'bg-flag-tint ring-2 ring-flag'
+                : 'bg-bubble hover:ring-2 hover:ring-signal/40',
+              hit: 'bg-safe-tint ring-2 ring-safe',
+              missed: 'bg-white outline-2 outline-dashed outline-flag',
+              wrong: 'bg-bubble ring-2 ring-ink-soft/40',
             }[state]
 
             return (
@@ -131,20 +137,20 @@ export default function SpotTheRedFlags({ onHome }) {
                   onClick={() => toggle(i)}
                   disabled={checked}
                   aria-pressed={isSel}
-                  className={`max-w-[85%] rounded-2xl rounded-bl-sm px-4 py-2 text-left text-stone-900 transition focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-teal-500 disabled:cursor-default ${bubble}`}
+                  className={`max-w-[85%] rounded-[20px] rounded-bl-md px-4 py-2 text-left text-ink transition disabled:cursor-default ${bubble}`}
                 >
-                  <span className="block text-xs font-semibold text-stone-500">{scenario.contact}</span>
+                  <span className="block text-sm font-bold text-ink-soft">{scenario.contact}</span>
                   {m.text}
                   {!checked && isSel && (
-                    <span className="mt-1 block text-xs font-semibold text-red-700">🚩 Flagged</span>
+                    <span className="mt-1 flex items-center gap-1.5 text-sm font-bold text-flag"><FlagIcon /> Flagged</span>
                   )}
                 </button>
 
                 {state === 'hit' && (
-                  <Explanation tone="emerald" title={`✅ You spotted it: ${m.flag.label}`} body={m.flag.why} />
+                  <Explanation tone="emerald" title={`Spotted: ${m.flag.label}`} body={m.flag.why} />
                 )}
                 {state === 'missed' && (
-                  <Explanation tone="amber" title={`⚠️ Missed red flag: ${m.flag.label}`} body={m.flag.why} />
+                  <Explanation tone="amber" title={`Missed: ${m.flag.label}`} body={m.flag.why} />
                 )}
                 {state === 'wrong' && (
                   <Explanation
@@ -158,21 +164,21 @@ export default function SpotTheRedFlags({ onHome }) {
           })}
         </ol>
 
-        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-stone-200 px-5 py-4 sm:px-6">
-          <p className="text-sm text-stone-600" aria-live="polite">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-5 py-4 sm:px-6">
+          <p className="text-sm text-ink-soft" aria-live="polite">
             {checked
               ? `${scenario.messages.filter((m, i) => m.flag && selected.has(i)).length} of ${flagsHere} red flags found`
               : `${selected.size} flagged`}
           </p>
           {checked ? (
-            <button type="button" onClick={next} className="rounded-full bg-teal-700 px-6 py-3 font-semibold text-white hover:bg-teal-800">
-              {index + 1 >= scenarios.length ? 'See my result' : 'Next conversation →'}
+            <button type="button" onClick={next} className="rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-ink">
+              {index + 1 >= scenarios.length ? 'See my result' : 'Next chat'}
             </button>
           ) : (
             <button
               type="button"
               onClick={check}
-              className="rounded-full bg-teal-700 px-6 py-3 font-semibold text-white hover:bg-teal-800"
+              className="rounded-full bg-signal px-6 py-3 font-bold text-white hover:bg-ink"
             >
               Check my answers
             </button>
@@ -185,12 +191,12 @@ export default function SpotTheRedFlags({ onHome }) {
 
 function Explanation({ tone, title, body }) {
   const tones = {
-    emerald: 'border-emerald-600 text-emerald-950',
-    amber: 'border-amber-500 text-amber-950',
-    stone: 'border-stone-400 text-stone-700',
+    emerald: 'border-safe text-ink',
+    amber: 'border-flag text-ink',
+    stone: 'border-line text-ink-soft',
   }
   return (
-    <div className={`mt-2 ml-2 max-w-[85%] border-l-4 pl-3 text-sm ${tones[tone]}`}>
+    <div className={`mt-2 ml-3 max-w-[85%] border-l-4 pl-3 ${tones[tone]}`}>
       <p className="font-semibold">{title}</p>
       <p className="mt-0.5">{body}</p>
     </div>

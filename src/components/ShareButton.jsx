@@ -9,31 +9,27 @@ export default function ShareButton({ text, label = 'Share your result' }) {
   async function share() {
     try {
       if (navigator.share) {
-        await navigator.share({ title: `${campaign.name} – ${campaign.tagline}`, text: message })
+        await navigator.share({ title: `${campaign.name}: ${campaign.tagline}`, text: message })
         return
       }
       await navigator.clipboard.writeText(message)
-      setStatus('Copied! Paste it anywhere to challenge your friends.')
+      setStatus('Copied. Paste it anywhere to challenge your friends.')
     } catch (err) {
       if (err?.name === 'AbortError') return
-      setStatus('Could not copy automatically — select the text below.')
+      setStatus('Couldn’t copy automatically. Select the text below instead.')
     }
   }
 
   return (
     <div>
-      <button
-        type="button"
-        onClick={share}
-        className="inline-flex items-center gap-2 rounded-full bg-teal-700 px-5 py-3 font-semibold text-white transition hover:bg-teal-800 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
-      >
+      <button type="button" onClick={share} className="rounded-full bg-signal px-6 py-3 text-lg font-bold text-white hover:bg-ink">
         {label}
       </button>
-      <p role="status" className="mt-2 min-h-5 text-sm text-stone-600">
+      <p role="status" className="mt-2 min-h-6 text-ink-soft">
         {status}
       </p>
-      {status.startsWith('Could not') && (
-        <textarea readOnly value={message} className="mt-1 w-full rounded-lg border border-stone-300 p-2 text-sm" rows={3} />
+      {status.startsWith('Couldn') && (
+        <textarea readOnly value={message} className="mt-1 w-full rounded-xl border border-line p-3" rows={3} />
       )}
     </div>
   )

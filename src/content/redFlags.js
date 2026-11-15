@@ -1,4 +1,5 @@
 // Spot the Red Flags — scenario content.
+// Each round plays ROUND_SIZE chats picked at random. Add as many as you like.
 //
 // DRAFT CONTENT: every scenario and explanation here must be reviewed and
 // approved by SOSA before launch. Keep scenarios fictional and non-graphic,
@@ -118,8 +119,117 @@ export const scenarios = [
       { from: 'you', text: 'mostly indie stuff' },
     ],
   },
+  {
+    id: 'friend-code',
+    title: 'A favour from a friend',
+    setting: 'Direct message from a friend’s account',
+    contact: 'mia ✨',
+    messages: [
+      { from: 'them', text: 'heyy are you there? need a quick favour' },
+      { from: 'you', text: 'hey what’s up' },
+      {
+        from: 'them',
+        text: 'my account got locked, i’m sending a code to your number. can you send it back to me?',
+        flag: {
+          label: 'Asking for a code',
+          why: 'Codes sent to your phone unlock your account, even if the message looks like it’s from a friend. Their account may have been taken over. Check with them another way, like a call.',
+        },
+      },
+      {
+        from: 'them',
+        text: 'pls hurry it expires in 2 min 😭',
+        flag: {
+          label: 'Rushing you',
+          why: 'Pressure to act fast stops you from checking. A real friend will understand if you take a minute to call them first.',
+        },
+      },
+      { from: 'them', text: 'also did you see the new season is out??' },
+    ],
+  },
+  {
+    id: 'parcel',
+    title: 'Your parcel is waiting',
+    setting: 'Text message from an unknown number',
+    contact: 'ParcelXpress',
+    messages: [
+      { from: 'them', text: 'ParcelXpress: Your parcel #ZA48812 could not be delivered today.' },
+      {
+        from: 'them',
+        text: 'Pay the R12.50 redelivery fee within 24h: parcelxpress-redeliver.co/pay',
+        flag: {
+          label: 'Strange link asking for a small fee',
+          why: 'A tiny fee is a common way to get your card details. Check deliveries in the official app or website you already use — never through a link in a text.',
+        },
+      },
+      { from: 'you', text: 'I’m not expecting anything?' },
+      {
+        from: 'them',
+        text: 'Failure to pay will result in your parcel being returned and your account closed.',
+        flag: {
+          label: 'Threats to make you panic',
+          why: 'Threats of losing something are designed to scare you into acting. Real companies don’t close accounts over a delivery fee.',
+        },
+      },
+    ],
+  },
+  {
+    id: 'easy-money',
+    title: 'Earn from home',
+    setting: 'A message request from an account you don’t know',
+    contact: 'opportunities_daily',
+    messages: [
+      {
+        from: 'them',
+        text: 'Hi! We’re looking for students to earn R5,000 a week from home 💸',
+        flag: {
+          label: 'Too good to be true',
+          why: 'Big money for little effort, offered by a stranger, is almost always a scam. Real jobs don’t recruit through random messages.',
+        },
+      },
+      { from: 'you', text: 'what would I have to do?' },
+      {
+        from: 'them',
+        text: 'Easy — money comes into your bank account and you send it on to us. You keep 10%.',
+        flag: {
+          label: 'Using your bank account',
+          why: 'Moving money for someone else can make you part of a crime, even if you didn’t know. Never let anyone use your account. Tell a trusted adult or your bank.',
+        },
+      },
+      { from: 'them', text: 'We’ve been running for three years and have great reviews.' },
+    ],
+  },
+  {
+    id: 'fake-mod',
+    title: 'A warning from the mods',
+    setting: 'Direct message in a gaming community server',
+    contact: 'Server_Mod_Team',
+    messages: [
+      { from: 'them', text: 'Hi, this is the moderation team. Your account was reported for breaking the rules.' },
+      { from: 'you', text: 'what did I do??' },
+      {
+        from: 'them',
+        text: 'To avoid a permanent ban, verify your account by sending us your password.',
+        flag: {
+          label: 'Asking for your password',
+          why: 'No real moderator or support team will ever ask for your password. Report the account and change your password if you’ve shared it.',
+        },
+      },
+      {
+        from: 'them',
+        text: 'We can’t share details. You have 15 minutes or the ban is automatic.',
+        flag: {
+          label: 'Rushing you with a deadline',
+          why: 'A countdown is a pressure tactic. Real moderators explain what happened and give you a proper way to appeal.',
+        },
+      },
+      { from: 'them', text: 'Thanks for being part of the community.' },
+    ],
+  },
 ]
 
 // Points: +10 per red flag found, −5 per message wrongly flagged (minimum 0).
 export const POINTS_CORRECT = 10
 export const POINTS_WRONG = 5
+
+// How many chats are played per round (picked at random from the list above).
+export const ROUND_SIZE = 4

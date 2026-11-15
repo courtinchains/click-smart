@@ -37,10 +37,15 @@ redeploys automatically.
 
 The game content is kept apart from the code, so SOSA can review it as plain text:
 
-- `src/content/redFlags.js`: four fictional conversations. Any message with a
-  `flag: { label, why }` counts as a red flag.
-- `src/content/privacyProfile.js`: one fictional profile. Each item is marked
-  `risky: true/false` and has a `why` explanation.
+- `src/content/redFlags.js`: eight fictional chats. Each round deals four of
+  them at random (`ROUND_SIZE`). Any message with a `flag: { label, why }`
+  counts as a red flag.
+- `src/content/privacyProfile.js`: eight fictional profiles. Each round shows
+  one at random. Each item is marked `risky: true/false` and has a `why`
+  explanation.
+
+Rounds are dealt like a shuffled deck (`src/lib/pick.js`): players see every
+chat or profile once before any of them repeats.
 
 Scoring: +10 for each correct find and −5 for each wrong pick, never below 0.
 Scenarios, items and explanations can be added or removed freely; the totals

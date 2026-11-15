@@ -1,123 +1,157 @@
 import { campaign, showOrg } from '../config.js'
 import DonateButton from './DonateButton.jsx'
 import ProgressBar from './ProgressBar.jsx'
-
-const GAMES = [
-  {
-    href: '#/red-flags',
-    emoji: '🚩',
-    title: 'Spot the Red Flags',
-    blurb: 'Read four fictional chats and tap the messages that should make you pause.',
-    time: '3 min',
-    color: 'from-rose-100 to-orange-100',
-  },
-  {
-    href: '#/privacy',
-    emoji: '🔎',
-    title: 'Privacy Detective',
-    blurb: 'Investigate a fictional profile and find the details that are oversharing.',
-    time: '2 min',
-    color: 'from-violet-100 to-sky-100',
-  },
-]
-
-const COMING = ['Myth or Fact?', 'What Would You Do?', 'Digital Safety Escape Room']
+import HeroChat, { FlagIcon } from './HeroChat.jsx'
 
 export default function Home() {
   return (
-    <div className="space-y-14">
+    <div>
       {/* Hero */}
-      <section className="text-center">
-        <p className="text-sm font-semibold tracking-widest text-teal-700 uppercase">{campaign.hashtag}</p>
-        <h1 className="mx-auto mt-3 max-w-3xl text-4xl font-extrabold tracking-tight text-balance sm:text-6xl">
-          Think before you click.
-        </h1>
-        <p className="mx-auto mt-5 max-w-2xl text-lg text-pretty text-stone-600">
-          Free, quick online-safety games. Learn to spot warning signs, protect your privacy, then challenge your
-          friends to beat your score.
-        </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href="#/red-flags" className="rounded-full bg-teal-700 px-7 py-4 text-lg font-semibold text-white shadow-sm hover:bg-teal-800">
-            Start playing
-          </a>
-          <a href="#support" className="rounded-full px-7 py-4 text-lg font-semibold text-stone-800 ring-1 ring-stone-300 hover:bg-white">
-            Why this matters
-          </a>
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 pt-10 pb-20 sm:px-8 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:pt-16 lg:pb-28">
+        <div>
+          <h1 className="text-[clamp(2.75rem,7vw,5.25rem)] leading-[0.95] font-extrabold tracking-[-0.03em]">
+            Can you spot the red flag?
+          </h1>
+          <p className="mt-6 max-w-[34rem] text-xl leading-relaxed text-ink-soft">
+            Short, free games that build the habit of pausing before you reply, share or click. Try the chat on this
+            page, then challenge your friends to beat your score.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="#/red-flags" className="rounded-full bg-signal px-7 py-4 text-lg font-bold text-white hover:bg-ink">
+              Start playing
+            </a>
+            <a href="#support" className="font-bold text-ink underline decoration-2 underline-offset-4 hover:text-signal">
+              Why we’re doing this
+            </a>
+          </div>
+          <p className="mt-8 text-ink-soft">
+            No sign-up. Nothing you tap is saved or sent anywhere.
+          </p>
         </div>
-        <p className="mt-4 text-sm text-stone-500">No sign-up. No tracking. Your answers never leave your device.</p>
+        <HeroChat />
       </section>
 
       {/* Games */}
-      <section aria-labelledby="games-title">
-        <h2 id="games-title" className="text-2xl font-bold">Choose a challenge</h2>
-        <div className="mt-5 grid gap-5 sm:grid-cols-2">
-          {GAMES.map((g) => (
-            <a
-              key={g.href}
-              href={g.href}
-              className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-stone-200 transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
-            >
-              <div className={`flex h-32 items-center justify-center bg-gradient-to-br text-6xl ${g.color}`} aria-hidden="true">
-                {g.emoji}
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="text-xl font-bold">{g.title}</h3>
-                  <span className="rounded-full bg-stone-100 px-3 py-1 text-xs font-semibold text-stone-600">{g.time}</span>
-                </div>
-                <p className="mt-2 text-stone-600">{g.blurb}</p>
-                <p className="mt-4 font-semibold text-teal-800 group-hover:underline">Play now →</p>
-              </div>
-            </a>
-          ))}
+      <section aria-labelledby="games-title" className="border-y border-line bg-white">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+          <h2 id="games-title" className="text-4xl font-extrabold tracking-tight">Two games, about five minutes</h2>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            <GameLink
+              href="#/red-flags"
+              title="Spot the Red Flags"
+              minutes={3}
+              text="Four chats, picked at random from eight. Tap the messages that should make you stop and think, then see why."
+              art={<RedFlagsArt />}
+            />
+            <GameLink
+              href="#/privacy"
+              title="Privacy Detective"
+              minutes={2}
+              text="Investigate one of eight made-up profiles and find everything that gives away too much."
+              art={<DetectiveArt />}
+            />
+          </div>
+          <p className="mt-8 text-ink-soft">More on the way: Myth or Fact, What Would You Do?, and a digital safety escape room.</p>
         </div>
-        <p className="mt-5 text-sm text-stone-500">
-          Coming soon: {COMING.join(' · ')}
-        </p>
       </section>
 
       {/* Fundraising */}
-      <section id="support" aria-labelledby="support-title" className="scroll-mt-6 rounded-3xl bg-teal-800 px-6 py-10 text-white sm:px-10">
-        <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:items-center">
+      <section id="support" aria-labelledby="support-title" className="scroll-mt-4 bg-ink text-white">
+        <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.2fr_1fr] lg:py-24">
           <div>
-            <h2 id="support-title" className="text-3xl font-bold">Learning is free. Protection takes resources.</h2>
-            <p className="mt-4 text-teal-50">
+            <h2 id="support-title" className="text-[clamp(2.25rem,5vw,3.5rem)] leading-[1.02] font-extrabold tracking-tight">
+              The games are free. Keeping children safe online isn’t.
+            </h2>
+            <p className="mt-6 max-w-[36rem] text-lg leading-relaxed text-white/80">
               {showOrg
-                ? `${campaign.name} is a volunteer fundraiser by ${campaign.fundraiser} for ${campaign.organisation}, which works to protect children from online sexual abuse.`
-                : `${campaign.name} is a volunteer fundraiser by ${campaign.fundraiser} supporting work to protect children from online abuse.`}{' '}
-              The games will always be free — if you’d like to help, you can make an optional donation through our
-              secure fundraising page.
+                ? `${campaign.name} is a volunteer project by ${campaign.fundraiser}, raising money for ${campaign.organisation}, which works to protect children from online sexual abuse.`
+                : `${campaign.name} is a volunteer project by ${campaign.fundraiser}, raising money for work that protects children from online abuse.`}{' '}
+              If you enjoyed playing, an optional donation helps that work continue.
             </p>
-            <p className="mt-3 text-sm text-teal-200">
-              Donations are processed by RallyUp. This website never sees or stores your payment details.
+            <p className="mt-4 max-w-[36rem] text-white/60">
+              Donations go through RallyUp’s secure page. This site never sees your payment details.
             </p>
           </div>
-          <div className="rounded-2xl bg-teal-900/50 p-6 ring-1 ring-teal-600">
+          <div className="self-end rounded-[28px] bg-white/[0.06] p-6 ring-1 ring-white/15 sm:p-8">
             <ProgressBar dark />
-            <div className="mt-6">
-              <DonateButton size="lg" className="w-full" />
-            </div>
+            <DonateButton size="lg" className="mt-7 w-full" />
           </div>
         </div>
       </section>
 
-      {/* How to take part */}
-      <section aria-labelledby="how-title">
-        <h2 id="how-title" className="text-2xl font-bold">Take the {campaign.hashtag}</h2>
-        <ol className="mt-5 grid gap-4 sm:grid-cols-3">
+      {/* Take part */}
+      <section aria-labelledby="how-title" className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+        <h2 id="how-title" className="text-4xl font-extrabold tracking-tight">Take the {campaign.hashtag}</h2>
+        <ol className="mt-10 grid gap-10 sm:grid-cols-3 sm:gap-8">
           {[
-            ['Play', 'Pick a game and test your online-safety instincts.'],
-            ['Share', 'Post your badge and challenge three friends to beat it.'],
-            ['Support', 'If you can, chip in — $5 from 60 people reaches the goal.'],
+            ['Play', 'Pick a game and see how sharp your instincts are.'],
+            ['Share', 'Post your result and dare three friends to beat it.'],
+            ['Support', 'If you can, chip in. Sixty people giving $5 gets us to the goal.'],
           ].map(([t, d], i) => (
-            <li key={t} className="rounded-2xl bg-white p-5 ring-1 ring-stone-200">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-400 font-bold text-stone-900">{i + 1}</span>
-              <h3 className="mt-3 font-semibold">{t}</h3>
-              <p className="mt-1 text-stone-600">{d}</p>
+            <li key={t} className="border-t-4 border-ink pt-5">
+              <p className="font-display text-5xl font-extrabold text-signal">{i + 1}</p>
+              <h3 className="mt-2 text-2xl font-bold">{t}</h3>
+              <p className="mt-2 text-lg text-ink-soft">{d}</p>
             </li>
           ))}
         </ol>
       </section>
+    </div>
+  )
+}
+
+function GameLink({ href, title, minutes, text, art }) {
+  return (
+    <a
+      href={href}
+      className="group flex flex-col overflow-hidden rounded-[28px] bg-paper ring-1 ring-line transition hover:ring-2 hover:ring-signal"
+    >
+      <div className="flex h-48 items-center justify-center px-6" aria-hidden="true">
+        {art}
+      </div>
+      <div className="flex flex-1 flex-col bg-white p-6 sm:p-7">
+        <div className="flex items-baseline justify-between gap-4">
+          <h3 className="text-2xl font-bold">{title}</h3>
+          <span className="shrink-0 text-ink-soft">{minutes} min</span>
+        </div>
+        <p className="mt-2 flex-1 text-lg text-ink-soft">{text}</p>
+        <span className="mt-5 font-bold text-signal group-hover:underline">Play {title}</span>
+      </div>
+    </a>
+  )
+}
+
+function RedFlagsArt() {
+  return (
+    <div className="w-full max-w-[17rem] space-y-2">
+      <div className="h-7 w-3/5 rounded-full rounded-bl-sm bg-bubble" />
+      <div className="ml-auto h-7 w-2/5 rounded-full rounded-br-sm bg-signal" />
+      <div className="flex h-9 w-4/5 items-center gap-2 rounded-full rounded-bl-sm bg-flag-tint px-3 text-flag ring-2 ring-flag">
+        <FlagIcon />
+        <span className="h-2 flex-1 rounded-full bg-flag/30" />
+      </div>
+      <div className="h-7 w-1/2 rounded-full rounded-bl-sm bg-bubble" />
+    </div>
+  )
+}
+
+function DetectiveArt() {
+  return (
+    <div className="relative w-full max-w-[17rem] rounded-2xl bg-white p-4 ring-1 ring-line">
+      <div className="flex items-center gap-3">
+        <span className="h-10 w-10 rounded-full bg-signal/80" />
+        <div className="space-y-1.5">
+          <span className="block h-2.5 w-24 rounded-full bg-ink/70" />
+          <span className="block h-2 w-16 rounded-full bg-line" />
+        </div>
+      </div>
+      <span className="mt-4 block h-2 w-full rounded-full bg-line" />
+      <span className="mt-2 block h-6 w-4/5 rounded-md bg-flag-tint ring-2 ring-flag" />
+      <span className="mt-2 block h-2 w-2/3 rounded-full bg-line" />
+      <svg viewBox="0 0 48 48" className="absolute -right-4 -bottom-5 h-16 w-16 text-ink" fill="none">
+        <circle cx="20" cy="20" r="13" stroke="currentColor" strokeWidth="5" fill="white" fillOpacity="0.6" />
+        <path d="M30 30l12 12" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+      </svg>
     </div>
   )
 }
