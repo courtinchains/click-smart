@@ -12,7 +12,6 @@ export function badgeFor(pct) {
 export default function ResultCard({ game, score, max, found, total, onReplay, onHome, replayLabel = 'Play again' }) {
   const pct = max ? Math.round((score / max) * 100) : 0
   const badge = badgeFor(pct)
-  const shareText = `I scored ${score}/${max} on ${game} and earned "${badge}" on ${campaign.name}.`
 
   return (
     <section aria-labelledby="result-title" className="mx-auto max-w-3xl">
@@ -35,12 +34,12 @@ export default function ResultCard({ game, score, max, found, total, onReplay, o
         <p className="border-t border-white/15 px-6 py-4 font-bold sm:px-10">{campaign.hashtag}</p>
       </div>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+      <div className="mt-8 grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-start">
         <div className="rounded-card bg-white p-6 ring-1 ring-line sm:p-7">
           <h2 className="text-2xl font-bold">Challenge your friends</h2>
-          <p className="mt-2 text-ink-soft">Share your score. No sign-up, and your result isn’t stored anywhere.</p>
+          <p className="mt-2 text-ink-soft">Post your result card and dare your friends to beat it. Your score isn’t stored anywhere.</p>
           <div className="mt-5">
-            <ShareButton text={shareText} />
+            <ShareButton result={{ game, badge, score, max, found, total }} />
           </div>
         </div>
         <div className="rounded-card bg-sun/25 p-6 ring-1 ring-sun sm:p-7">
