@@ -64,7 +64,7 @@ export default function ShareButton({ result }) {
   ]
 
   const chip =
-    'inline-flex items-center justify-center rounded-full px-4 py-2.5 font-bold ring-1 ring-line bg-white hover:ring-2 hover:ring-signal'
+    'inline-flex items-center justify-center rounded-full px-4 py-2.5 font-bold ring-1 ring-line bg-surface hover:ring-2 hover:ring-signal'
 
   return (
     <div>

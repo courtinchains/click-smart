@@ -3,6 +3,7 @@ import { campaign, showOrg } from './config.js'
 import Home from './components/Home.jsx'
 import Footer from './components/Footer.jsx'
 import DonateButton from './components/DonateButton.jsx'
+import ThemeToggle from './components/ThemeToggle.jsx'
 import SpotTheRedFlags from './games/SpotTheRedFlags.jsx'
 import PrivacyDetective from './games/PrivacyDetective.jsx'
 
@@ -51,12 +52,12 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-10 focus:rounded focus:bg-white focus:px-3 focus:py-2">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-10 focus:rounded focus:bg-surface focus:px-3 focus:py-2">
         Skip to content
       </a>
 
       {!campaign.organisationApproved && (
-        <p className="bg-sun px-4 py-2 text-center text-sm font-bold text-ink">
+        <p className="bg-sun px-4 py-2 text-center text-sm font-bold text-on-sun">
           Preview: content is awaiting review before launch.
         </p>
       )}
@@ -75,7 +76,10 @@ export default function App() {
             <span className="font-display text-2xl font-semibold tracking-tight">click smart</span>
             {showOrg && <span className="hidden text-ink-soft sm:inline">for {campaign.organisation}</span>}
           </a>
-          <DonateButton size="sm" />
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            <DonateButton size="sm" />
+          </div>
         </div>
       </header>
 

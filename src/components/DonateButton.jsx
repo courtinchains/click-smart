@@ -21,7 +21,7 @@ export default function DonateButton({ size = 'md', className = '' }) {
       href={campaign.rallyUpUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${base} bg-sun text-ink shadow-[inset_0_-3px_0_rgba(26,27,65,0.18)] hover:brightness-105`}
+      className={`${base} bg-sun text-on-sun shadow-[inset_0_-3px_0_rgba(26,27,65,0.18)] hover:brightness-105`}
     >
       Donate
       <span className="sr-only"> (opens the secure RallyUp page in a new tab)</span>

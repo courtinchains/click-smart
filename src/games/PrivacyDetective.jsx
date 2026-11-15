@@ -71,10 +71,10 @@ export default function PrivacyDetective({ onHome }) {
 
       <div className="mt-5 grid gap-6 lg:grid-cols-[1fr_18rem]">
         {/* Fictional profile */}
-        <div className="overflow-hidden rounded-card bg-white shadow-sm ring-1 ring-line">
+        <div className="overflow-hidden rounded-card bg-surface shadow-sm ring-1 ring-line">
           <div className="h-24" style={{ background: `linear-gradient(90deg, ${profile.banner[0]}, ${profile.banner[1]})` }} aria-hidden="true" />
           <div className="px-5 pb-6 sm:px-6">
-            <div className="-mt-10 flex h-20 w-20 items-center justify-center rounded-full bg-deep font-display text-2xl text-white ring-4 ring-white" aria-hidden="true">
+            <div className="-mt-10 flex h-20 w-20 items-center justify-center rounded-full bg-deep font-display text-2xl text-white ring-4 ring-surface" aria-hidden="true">
               {profile.avatarInitials}
             </div>
             <p className="mt-3 text-2xl font-bold">{profile.displayName}</p>
@@ -104,7 +104,7 @@ export default function PrivacyDetective({ onHome }) {
 
         {/* Side panel */}
         <aside className="space-y-4 lg:sticky lg:top-6 lg:self-start">
-          <div className="rounded-card bg-white p-5 shadow-sm ring-1 ring-line">
+          <div className="rounded-card bg-surface p-5 shadow-sm ring-1 ring-line">
             <p className="text-sm text-ink-soft" aria-live="polite">
               {checked ? (
                 <>
@@ -166,10 +166,10 @@ function Item({ item, selected, checked, onToggle, post = false }) {
   }
 
   const styles = {
-    idle: 'bg-white ring-1 ring-line hover:ring-2 hover:ring-signal/40',
+    idle: 'bg-surface ring-1 ring-line hover:ring-2 hover:ring-signal/40',
     selected: 'bg-flag-tint ring-2 ring-flag',
     hit: 'bg-safe-tint ring-2 ring-safe',
-    missed: 'bg-white outline-2 outline-dashed outline-flag',
+    missed: 'bg-surface outline-2 outline-dashed outline-flag',
     wrong: 'bg-bubble ring-2 ring-ink-soft/40',
     safe: 'bg-paper ring-1 ring-line',
   }[state]

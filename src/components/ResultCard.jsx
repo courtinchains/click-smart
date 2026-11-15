@@ -35,7 +35,7 @@ export default function ResultCard({ game, score, max, found, total, onReplay, o
       </div>
 
       <div className="mt-8 grid gap-6 md:grid-cols-[1.4fr_1fr] md:items-start">
-        <div className="rounded-card bg-white p-6 ring-1 ring-line sm:p-7">
+        <div className="rounded-card bg-surface p-6 ring-1 ring-line sm:p-7">
           <h2 className="text-2xl font-bold">Challenge your friends</h2>
           <p className="mt-2 text-ink-soft">Post your result card and dare your friends to beat it. Your score isn’t stored anywhere.</p>
           <div className="mt-5">
@@ -54,10 +54,10 @@ export default function ResultCard({ game, score, max, found, total, onReplay, o
       </div>
 
       <div className="mt-8 flex flex-wrap gap-3">
-        <button type="button" onClick={onReplay} className="rounded-full px-5 py-2.5 font-bold ring-2 ring-ink hover:bg-white">
+        <button type="button" onClick={onReplay} className="rounded-full px-5 py-2.5 font-bold ring-2 ring-ink hover:bg-surface">
           {replayLabel}
         </button>
-        <button type="button" onClick={onHome} className="rounded-full px-5 py-2.5 font-bold text-ink-soft ring-1 ring-line hover:bg-white">
+        <button type="button" onClick={onHome} className="rounded-full px-5 py-2.5 font-bold text-ink-soft ring-1 ring-line hover:bg-surface">
           Try another game
         </button>
       </div>

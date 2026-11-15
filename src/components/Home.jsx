@@ -32,7 +32,7 @@ export default function Home() {
       </section>
 
       {/* Games */}
-      <section aria-labelledby="games-title" className="border-y border-line bg-white">
+      <section aria-labelledby="games-title" className="border-y border-line bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
           <h2 id="games-title" className="text-4xl tracking-tight">Two games, about five minutes</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -109,7 +109,7 @@ function GameLink({ href, title, minutes, text, art }) {
       <div className="flex h-48 items-center justify-center px-6" aria-hidden="true">
         {art}
       </div>
-      <div className="flex flex-1 flex-col bg-white p-6 sm:p-7">
+      <div className="flex flex-1 flex-col bg-surface p-6 sm:p-7">
         <div className="flex items-baseline justify-between gap-4">
           <h3 className="text-2xl font-bold">{title}</h3>
           <span className="shrink-0 text-ink-soft">{minutes} min</span>
@@ -137,7 +137,7 @@ function RedFlagsArt() {
 
 function DetectiveArt() {
   return (
-    <div className="relative w-full max-w-[17rem] rounded-2xl bg-white p-4 ring-1 ring-line">
+    <div className="relative w-full max-w-[17rem] rounded-2xl bg-surface p-4 ring-1 ring-line">
       <div className="flex items-center gap-3">
         <span className="h-10 w-10 rounded-full bg-signal/80" />
         <div className="space-y-1.5">
@@ -149,7 +149,7 @@ function DetectiveArt() {
       <span className="mt-2 block h-6 w-4/5 rounded-md bg-flag-tint ring-2 ring-flag" />
       <span className="mt-2 block h-2 w-2/3 rounded-full bg-line" />
       <svg viewBox="0 0 48 48" className="absolute -right-4 -bottom-5 h-16 w-16 text-ink" fill="none">
-        <circle cx="20" cy="20" r="13" stroke="currentColor" strokeWidth="5" fill="white" fillOpacity="0.6" />
+        <circle cx="20" cy="20" r="13" stroke="currentColor" strokeWidth="5" fill="var(--color-surface)" fillOpacity="0.6" />
         <path d="M30 30l12 12" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
       </svg>
     </div>

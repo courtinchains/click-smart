@@ -19,8 +19,29 @@
   --color-safe: #2c7139;      /* SOSA green ink: correct */
   --color-safe-tint: #d5ebd0; /* SOSA green background */
   --color-sun: #74e46e;       /* SOSA pop green: donate */
+  --color-on-sun: #17252a;    /* text on the green donate button */
+  --color-surface: #ffffff;   /* cards, chat window, panels */
 
   --radius-card: 2px;
+}
+
+/* Dark theme: same SOSA family, inverted. Set by the header toggle (or the
+   visitor's device setting) via <html data-theme="dark">. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-ink: #e9efee;
+  --color-ink-soft: #a7b6b8;
+  --color-deep: #0c2a3d;
+  --color-on-deep: #c3d2e0;
+  --color-paper: #0d181d;
+  --color-surface: #14232a;
+  --color-bubble: #223848;
+  --color-line: #2a3c44;
+  --color-signal: #3b8bbd;
+  --color-flag: #ec8fac;
+  --color-flag-tint: #3b1d29;
+  --color-safe: #86d692;
+  --color-safe-tint: #19361f;
 }
 
 @layer base {

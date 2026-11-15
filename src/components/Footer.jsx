@@ -2,7 +2,7 @@ import { campaign, showOrg } from '../config.js'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line bg-white">
+    <footer className="border-t border-line bg-surface">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-2">
         <div id="help" className="scroll-mt-6">
           <h2 className="text-2xl">Worried about something online?</h2>
@@ -29,7 +29,7 @@ export default function Footer() {
             {showOrg && ` in support of ${campaign.organisation}`}. Every chat and profile in the games is made up.
           </p>
           <p className="mt-3 max-w-[30rem] text-ink-soft">
-            No accounts, cookies or analytics. Your answers stay in your browser and disappear when you leave.
+            No accounts, cookies or analytics. Your answers stay in your browser and disappear when you leave. The only thing remembered is your light or dark mode choice, on your own device.
             Donations are handled entirely by RallyUp.
           </p>
         </div>

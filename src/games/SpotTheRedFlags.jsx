@@ -87,7 +87,7 @@ export default function SpotTheRedFlags({ onHome }) {
         onHome={onHome}
       />
 
-      <div className="mt-6 overflow-hidden rounded-card bg-white shadow-sm ring-1 ring-line">
+      <div className="mt-6 overflow-hidden rounded-card bg-surface shadow-sm ring-1 ring-line">
         <div className="border-b border-line px-5 py-4 sm:px-6">
           <h2 className="text-2xl font-bold">{scenario.title}</h2>
           <p className="text-sm text-ink-soft">{scenario.setting}</p>
@@ -126,7 +126,7 @@ export default function SpotTheRedFlags({ onHome }) {
                 ? 'bg-flag-tint ring-2 ring-flag'
                 : 'bg-bubble hover:ring-2 hover:ring-signal/40',
               hit: 'bg-safe-tint ring-2 ring-safe',
-              missed: 'bg-white outline-2 outline-dashed outline-flag',
+              missed: 'bg-surface outline-2 outline-dashed outline-flag',
               wrong: 'bg-bubble ring-2 ring-ink-soft/40',
             }[state]
 
