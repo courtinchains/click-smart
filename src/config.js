@@ -27,7 +27,7 @@ export const campaign = {
   lastUpdated: '', // e.g. '2026-11-20'
 
   // Public site address, used in share messages. Set after deploying.
-  siteUrl: '',
+  siteUrl: 'https://click-smart-ivory.vercel.app',
 
   // Support / reporting resources approved by SOSA. Leave empty until SOSA
   // supplies them; the footer then shows a generic "talk to someone you trust".
