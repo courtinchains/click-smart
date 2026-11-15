@@ -16,7 +16,7 @@ export const campaign = {
   // Paste your individual RallyUp page URL here once it exists
   // (created via SOSA's template → "Participate Here").
   // While this is empty, the Donate button shows "Donation link coming soon".
-  rallyUpUrl: '',
+  rallyUpUrl: 'https://go.rallyup.com/e74f07/m/clicksmart2026/',
 
   goalUSD: 300,
 
