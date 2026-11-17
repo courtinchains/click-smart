@@ -15,14 +15,7 @@
     <meta property="og:image:alt" content="CLICK SMART – Think before you click. Free online-safety games." />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#123c55" />
-    <script>
-      // Apply the saved or device theme before the page paints (no white flash).
-      try {
-        var t = localStorage.getItem('click-smart-theme')
-        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-        document.documentElement.dataset.theme = t
-      } catch (e) {}
-    </script>
+    <script src="/theme-init.js"></script>
     <title>CLICK SMART – Think Before You Click</title>
   </head>
   <body>
