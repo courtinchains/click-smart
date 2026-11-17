@@ -1,4 +1,5 @@
 import { campaign, showOrg } from '../config.js'
+import { supportRegion, supportContacts } from '../content/support.js'
 
 export default function Footer() {
   return (
@@ -7,9 +8,40 @@ export default function Footer() {
         <div id="help" className="scroll-mt-6">
           <h2 className="text-2xl">Worried about something online?</h2>
           <p className="mt-3 max-w-[30rem] text-ink-soft">
-            You’re never in trouble for asking for help. Talk to a parent, carer, teacher or another adult you trust. If
-            someone is in immediate danger, contact your local emergency services.
+            You’re never in trouble for asking for help. Talk to a parent, carer, teacher or another adult you trust.
           </p>
+
+          <h3 className="mt-6 font-sans text-sm font-bold text-ink">In {supportRegion}</h3>
+          <ul className="mt-3 divide-y divide-line rounded-card ring-1 ring-line">
+            {supportContacts.map((c) => (
+              <li key={c.label} className="flex items-start justify-between gap-4 px-4 py-3">
+                <div>
+                  <p className="font-bold">{c.label}</p>
+                  <p className="text-sm text-ink-soft">{c.note}</p>
+                </div>
+                {c.tel ? (
+                  <a
+                    href={`tel:${c.tel}`}
+                    className="shrink-0 rounded-full bg-ink px-4 py-1.5 font-display text-xl text-paper hover:bg-signal hover:text-white"
+                    aria-label={`Call ${c.label} on ${c.number}`}
+                  >
+                    {c.number}
+                  </a>
+                ) : (
+                  <a
+                    href={c.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="max-w-[9rem] shrink-0 text-right text-sm font-bold text-signal underline underline-offset-4"
+                  >
+                    {c.linkText}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-sm text-ink-soft">Outside {supportRegion}? Contact your local emergency services.</p>
           {campaign.supportLinks.length > 0 && (
             <ul className="mt-4 space-y-1.5">
               {campaign.supportLinks.map((l) => (
