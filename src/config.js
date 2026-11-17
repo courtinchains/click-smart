@@ -22,9 +22,9 @@ export const campaign = {
 
   // CONFIRMED donations only, taken from your RallyUp report/export.
   // A click on Donate is NOT a donation — never estimate this number.
-  confirmedRaisedUSD: 0,
+  confirmedRaisedUSD: 5,
   confirmedDonations: 0,
-  lastUpdated: '', // e.g. '2026-11-20'
+  lastUpdated: '17 Nov 2026', // e.g. '20 Nov 2026'
 
   // Public site address, used in share messages. Set after deploying.
   siteUrl: 'https://click-smart-ivory.vercel.app',
