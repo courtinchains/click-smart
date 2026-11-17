@@ -7,10 +7,12 @@ import ThemeToggle from './components/ThemeToggle.jsx'
 import SpotTheRedFlags from './games/SpotTheRedFlags.jsx'
 import PrivacyDetective from './games/PrivacyDetective.jsx'
 import MythOrFact from './games/MythOrFact.jsx'
+import WhatWouldYouDo from './games/WhatWouldYouDo.jsx'
+import EscapeRoom from './games/EscapeRoom.jsx'
 
 // Tiny hash router: #/ , #/red-flags , #/privacy — no extra dependency,
 // and links to a specific game can be shared.
-const ROUTES = ['red-flags', 'privacy', 'myth-or-fact']
+const ROUTES = ['red-flags', 'privacy', 'myth-or-fact', 'what-would-you-do', 'escape-room']
 
 function useRoute() {
   const read = () => {
@@ -48,6 +50,8 @@ export default function App() {
   if (route === 'red-flags') page = <SpotTheRedFlags onHome={home} />
   else if (route === 'privacy') page = <PrivacyDetective onHome={home} />
   else if (route === 'myth-or-fact') page = <MythOrFact onHome={home} />
+  else if (route === 'what-would-you-do') page = <WhatWouldYouDo onHome={home} />
+  else if (route === 'escape-room') page = <EscapeRoom onHome={home} />
   else page = <Home />
 
   const isGame = ROUTES.includes(route)

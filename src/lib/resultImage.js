@@ -38,7 +38,7 @@ function wrap(ctx, text, maxWidth) {
   return lines
 }
 
-export async function makeResultImage({ game, badge, score, max, found, total, foundLabel = 'found', siteUrl, organisation }) {
+export async function makeResultImage({ game, badge, score, max, summary, siteUrl, organisation }) {
   if (document.fonts?.ready) await document.fonts.ready
 
   const W = 1080
@@ -105,7 +105,7 @@ export async function makeResultImage({ game, badge, score, max, found, total, f
   ctx.font = `400 48px ${SANS}`
   ctx.fillText(`/ ${max} points`, 84 + sw + 20, y)
   ctx.font = `400 38px ${SANS}`
-  ctx.fillText(`${found} of ${total} ${foundLabel}`, 90, y + 70)
+  ctx.fillText(summary, 90, y + 70)
 
   // Little chat motif with a flagged message
   const cx = 90

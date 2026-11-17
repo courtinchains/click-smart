@@ -46,6 +46,12 @@ The game content is kept apart from the code, so SOSA can review it as plain tex
 
 - `src/content/mythOrFact.js`: eighteen statements, each marked
   `answer: 'myth' | 'fact'` with a `why`. Each round deals eight (`ROUND_SIZE`).
+- `src/content/whatWouldYouDo.js`: twelve branching situations; each round plays
+  three. Every choice is rated `best`, `okay` or `risky` (10/5/0 points), has
+  `feedback`, and a `next` node id (leave `next` out to end the situation).
+- `src/content/escapeRoom.js`: four rooms played in order, each with four
+  puzzle `variants` (one is dealt per room each game). Each solved room reveals
+  one digit of a random exit code. Wrong tries cost 10 points.
 
 Rounds are dealt like a shuffled deck (`src/lib/pick.js`): players see every
 chat or profile once before any of them repeats.
@@ -76,6 +82,8 @@ src/
     SpotTheRedFlags.jsx
     PrivacyDetective.jsx
     MythOrFact.jsx
+    WhatWouldYouDo.jsx
+    EscapeRoom.jsx
   components/
     Home.jsx                 landing page
     ResultCard.jsx           score, badge, share and donate prompt
@@ -85,7 +93,8 @@ src/
     GameHeader.jsx, Footer.jsx
 ```
 
-Each game has its own address: `/#/red-flags`, `/#/privacy` and `/#/myth-or-fact`, so you can link
+Each game has its own address: `/#/red-flags`, `/#/privacy`, `/#/myth-or-fact`,
+`/#/what-would-you-do` and `/#/escape-room`, so you can link
 straight to one in a social post.
 
 ## Launch checklist
@@ -99,9 +108,9 @@ straight to one in a social post.
 - [ ] Test on a phone and a desktop, and check that the Donate link opens the right page.
 - [ ] Set `siteUrl` after the first deploy.
 
-## Adding the next game
+## Adding another game
 
-Create `src/games/WhatWouldYouDo.jsx` and put its content in `src/content/`.
+Create `src/games/YourGame.jsx` and put its content in `src/content/`.
 Add the route name to `ROUTES` in `App.jsx` (plus a line choosing the page),
 and a `<GameLink>` card in `Home.jsx`. Reuse `GameHeader`, `ResultCard` and
 `pickFresh` from `src/lib/pick.js` for a matching look and random rounds.

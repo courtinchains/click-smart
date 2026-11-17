@@ -34,7 +34,7 @@ export default function Home() {
       {/* Games */}
       <section aria-labelledby="games-title" className="border-y border-line bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
-          <h2 id="games-title" className="text-4xl tracking-tight">Three games, about ten minutes</h2>
+          <h2 id="games-title" className="text-4xl tracking-tight">Five games, about twenty minutes</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <GameLink
               href="#/red-flags"
@@ -57,8 +57,30 @@ export default function Home() {
               text="Eight quick statements about staying safe online. Decide which are true, and learn why."
               art={<MythFactArt />}
             />
+            <GameLink
+              href="#/what-would-you-do"
+              title="What Would You Do?"
+              minutes={5}
+              text="Three tricky situations where your choices change what happens next. See how your decisions play out."
+              art={<ChoicesArt />}
+            />
+            <GameLink
+              href="#/escape-room"
+              title="Escape Room"
+              minutes={5}
+              text="Four locked rooms, four safety puzzles. Find every digit of the code to get out, as fast as you can."
+              art={<EscapeArt />}
+            />
+            <div className="flex flex-col justify-between rounded-card bg-deep p-7 text-white">
+              <div>
+                <h3 className="text-2xl">Played them all?</h3>
+                <p className="mt-2 text-lg text-on-deep">
+                  Share your best badge with {campaign.hashtag}, and if you can, help fund the work behind it.
+                </p>
+              </div>
+              <DonateButton className="mt-6 self-start" />
+            </div>
           </div>
-          <p className="mt-8 text-ink-soft">More on the way: What Would You Do? and a digital safety escape room.</p>
         </div>
       </section>
 
@@ -138,6 +160,40 @@ function RedFlagsArt() {
         <span className="h-2 flex-1 rounded-full bg-flag/30" />
       </div>
       <div className="h-7 w-1/2 rounded-full rounded-bl-sm bg-bubble" />
+    </div>
+  )
+}
+
+function ChoicesArt() {
+  return (
+    <div className="w-full max-w-[17rem] space-y-2">
+      <div className="h-8 w-4/5 rounded-[18px] rounded-bl-md bg-bubble" />
+      <div className="flex h-9 items-center rounded-card bg-safe-tint px-3 ring-2 ring-safe">
+        <span className="h-2 w-3/4 rounded-full bg-safe/40" />
+      </div>
+      <div className="flex h-9 items-center rounded-card bg-surface px-3 ring-1 ring-line">
+        <span className="h-2 w-2/3 rounded-full bg-line" />
+      </div>
+      <div className="flex h-9 items-center rounded-card bg-surface px-3 ring-1 ring-line">
+        <span className="h-2 w-1/2 rounded-full bg-line" />
+      </div>
+    </div>
+  )
+}
+
+function EscapeArt() {
+  return (
+    <div className="flex items-end gap-5">
+      <div className="relative h-32 w-20 rounded-t-[40px] bg-deep ring-4 ring-line">
+        <span className="absolute top-16 right-3 h-3 w-3 rounded-full bg-sun" />
+      </div>
+      <div className="mb-2 flex gap-1.5">
+        {['4', '?', '?', '?'].map((d, i) => (
+          <span key={i} className={`flex h-10 w-8 items-center justify-center rounded-card font-display text-xl ${i === 0 ? 'bg-deep text-white' : 'bg-surface text-ink-soft ring-1 ring-line'}`}>
+            {d}
+          </span>
+        ))}
+      </div>
     </div>
   )
 }
